@@ -214,7 +214,6 @@ The Admin Panel provides comprehensive content management capabilities:
 ### Madhan Mohan Reddy
 
 - **Email**: <madhanmohanreddyperam06@gmail.com>
-- **Mobile**: +91 9110395993
 
 ---
 
