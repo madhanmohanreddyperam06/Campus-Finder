@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useEffect, useState, Suspense } from 'react';
+import { useSearchParams, useRouter, useParams } from 'next/navigation';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -82,13 +82,15 @@ const infrastructureItems = [
   { id: 'wifi', label: 'WiFi' },
 ] as const;
 
-export default function EditInstitutionPage() {
+function EditInstitutionForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { institutions, updateInstitution } = useInstitutions();
   const { toast } = useToast();
 
-  const institutionId = searchParams.get('id');
+  const params = useParams();
+  const routeId = Array.isArray(params?.id) ? params.id[0] : (params?.id as string);
+  const institutionId = routeId || searchParams.get('id');
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -640,5 +642,14 @@ export default function EditInstitutionPage() {
         </Form>
       </motion.div>
     </div>
+  );
+}
+
+
+export default function EditInstitutionPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-muted-foreground">Loading...</div>}>
+      <EditInstitutionForm />
+    </Suspense>
   );
 }

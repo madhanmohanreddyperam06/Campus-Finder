@@ -10,7 +10,6 @@
 import {z} from 'zod';
 import { institutions } from '@/lib/data';
 import { ai } from '@/ai/genkit';
-import { render } from 'mustache';
 
 const InstitutionRecommendationsInputSchema = z.object({
   criteria: z.string().describe("The user's detailed criteria for their ideal institution, for example, 'affordable engineering colleges in Maharashtra with good placements and a strong focus on robotics'."),
@@ -88,13 +87,11 @@ const institutionRecommendationFlow = ai.defineFlow(
     inputSchema: InstitutionRecommendationsInputSchema,
     outputSchema: InstitutionRecommendationsOutputSchema,
   },
-  async (input) => {
-    const response = await ai.generate({
-        prompt: {
-            ...institutionRecommendationPrompt,
-            input: {...input, institutionContext},
-        }
+  async (input: InstitutionRecommendationsInput) => {
+    const response = await institutionRecommendationPrompt({
+      ...input,
+      institutionContext,
     });
-    return response.output() || { recommendations: [] };
+    return response.output || { recommendations: [] };
   }
 );

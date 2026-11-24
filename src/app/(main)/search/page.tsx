@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useState, useMemo, useEffect, useRef } from 'react';
+import { useState, useMemo, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -15,8 +15,9 @@ import { useToast } from '@/hooks/use-toast';
 import { states, cities } from '@/lib/cities';
 import { useInstitutions } from '@/hooks/use-institutions';
 import { Card, CardContent } from '@/components/ui/card';
+import type { Institution } from '@/lib/types';
 
-export default function SearchPage() {
+function SearchContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { toast } = useToast();
@@ -89,7 +90,7 @@ export default function SearchPage() {
     return filtered;
   };
 
-  const performSearch = (filterFn: (inst: any) => boolean, params: URLSearchParams) => {
+  const performSearch = (filterFn: (inst: Institution) => boolean, params: URLSearchParams) => {
     let filtered = allInstitutions.filter(filterFn);
     filtered = applyAdvancedFilters(filtered);
     setResults(filtered);
@@ -102,7 +103,7 @@ export default function SearchPage() {
   useEffect(() => {
     setIsClient(true);
     if (typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
       recognitionRef.current = new SpeechRecognition();
       recognitionRef.current.continuous = false;
       recognitionRef.current.lang = 'en-US';
@@ -321,5 +322,13 @@ export default function SearchPage() {
       )
     }
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-muted-foreground">Loading search...</div>}>
+      <SearchContent />
+    </Suspense>
   );
 }

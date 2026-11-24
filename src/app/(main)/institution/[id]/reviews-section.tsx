@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -43,8 +43,8 @@ export function ReviewsSection({ reviews: initialReviews, onAddReview }: Reviews
     ? reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length
     : 0;
   
-  useState(() => {
-    setReviews(initialReviews)
+  useEffect(() => {
+    setReviews(initialReviews);
   }, [initialReviews]);
 
   const handleReviewSubmit = (e: React.FormEvent) => {

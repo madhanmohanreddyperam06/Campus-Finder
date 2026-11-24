@@ -75,7 +75,7 @@ export default function FavoritesPage() {
             <h2 className="mt-6 text-2xl font-semibold">No Favorites Yet</h2>
             <p className="mt-2 text-muted-foreground">Click the heart icon on any institution to save it here.</p>
             <Button asChild className="mt-6">
-                <Link href="/">Discover Institutions</Link>
+                <Link href="/search">Discover Institutions</Link>
             </Button>
         </div>
       )}

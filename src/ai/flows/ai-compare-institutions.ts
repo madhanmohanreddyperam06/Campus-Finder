@@ -9,7 +9,6 @@
 import type { Institution } from '@/lib/types';
 import { CompareInstitutionsInputSchema, ComparisonResultSchema, type CompareInstitutionsInput, type ComparisonResult } from '@/lib/ai-types';
 import { ai } from '@/ai/genkit';
-import { googleAI } from '@genkit-ai/google-genai';
 
 
 // This is the exported function that will be called from the frontend.
@@ -74,7 +73,7 @@ const compareInstitutionsFlow = ai.defineFlow(
     inputSchema: CompareInstitutionsInputSchema,
     outputSchema: ComparisonResultSchema,
   },
-  async (input) => {
+  async (input: CompareInstitutionsInput) => {
     // A little hack to make mustache.js render the infrastructure keys.
     const view = {
       ...input,
@@ -88,14 +87,9 @@ const compareInstitutionsFlow = ai.defineFlow(
       }
     };
     
-    const response = await ai.generate({
-      prompt: {
-        ...compareInstitutionsPrompt,
-        input: view
-      }
-    });
+    const response = await compareInstitutionsPrompt(view as any);
 
-    const output = response.output();
+    const output = response.output;
     if (!output) {
       throw new Error("AI failed to generate a comparison.");
     }

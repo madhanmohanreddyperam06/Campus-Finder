@@ -62,7 +62,7 @@ export default function HomePage() {
   useEffect(() => {
     setIsClient(true);
     if (typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
       recognitionRef.current = new SpeechRecognition();
       recognitionRef.current.continuous = false;
       recognitionRef.current.lang = 'en-US';
@@ -198,7 +198,7 @@ export default function HomePage() {
                 <Image
                   src="https://img.freepik.com/premium-photo/child-girl-schoolgirl-elementary-school-student_656932-685.jpg"
                   alt="School Child"
-                  layout="fill"
+                  fill
                   className="rounded-full object-cover shadow-lg transition-transform duration-300 group-hover:scale-110"
                   data-ai-hint="school child"
                 />
@@ -216,7 +216,7 @@ export default function HomePage() {
                 <Image
                   src="https://img.freepik.com/premium-photo/confident-pleasantly-smiling-asian-college-student-boy-carrying-his-schoolbag-radiating-assuran_939678-869.jpg"
                   alt="College Student"
-                  layout="fill"
+                  fill
                   className="rounded-full object-cover shadow-2xl transition-transform duration-300 group-hover:scale-110"
                   data-ai-hint="college student"
                 />

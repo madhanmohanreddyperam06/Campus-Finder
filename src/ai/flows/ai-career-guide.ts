@@ -53,15 +53,10 @@ const careerGuideFlow = ai.defineFlow(
     inputSchema: CareerGuideInputSchema,
     outputSchema: CareerGuideOutputSchema,
   },
-  async input => {
-    const response = await ai.generate({
-      prompt: {
-        ...careerGuidePrompt,
-        input
-      }
-    });
+  async (input: CareerGuideInput) => {
+    const response = await careerGuidePrompt(input);
 
-    const output = response.output();
+    const output = response.output;
     if (!output) {
       throw new Error("AI failed to generate career guidance.");
     }

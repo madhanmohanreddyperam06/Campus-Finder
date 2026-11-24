@@ -24,9 +24,9 @@ const titleMap: Record<string, string> = {
 export default function InstitutionTypePage() {
   const params = useParams();
   const { institutions: allInstitutions } = useInstitutions();
-  const typeSlug = Array.isArray(params.type) ? params.type[0] : params.type;
+  const typeSlug = Array.isArray(params?.type) ? params.type[0] : params?.type;
   
-  const institutionType = typeMap[typeSlug] || null;
+  const institutionType = typeSlug ? (typeMap[typeSlug] || null) : null;
 
   if (!institutionType) {
     notFound();

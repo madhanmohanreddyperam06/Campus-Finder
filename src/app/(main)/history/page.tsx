@@ -75,7 +75,7 @@ export default function HistoryPage() {
             <h2 className="mt-6 text-2xl font-semibold">No History Yet</h2>
             <p className="mt-2 text-muted-foreground">Your recently viewed institutions will appear here.</p>
             <Button asChild className="mt-6">
-                <Link href="/">Start Exploring</Link>
+                <Link href="/search">Start Exploring</Link>
             </Button>
         </div>
       )}

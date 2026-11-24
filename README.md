@@ -1,12 +1,13 @@
 # Campus Finder: An AI-Powered Recommendation System for Personalized Discovery of Indian Educational Institutions
 
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![Google Gemini](https://img.shields.io/badge/Google%20Gemini-8E75FF?style=for-the-badge&logo=googlegemini&logoColor=white)
-![ShadCN/UI](https://img.shields.io/badge/ShadCN%2FUI-000000?style=for-the-badge&logo=shadcnui&logoColor=white)
-
+![Next.js](https://img.shields.io/badge/Next.js-15.3.8-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Google_Gemini-AI-8E75FF?style=flat-square&logo=googlegemini&logoColor=white)
+![ShadCN/UI](https://img.shields.io/badge/ShadCN%2FUI-Latest-000000?style=flat-square&logo=shadcnui&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+   
 ![Campus Finder Application](src/app/image.png)
 
 Welcome to Campus Finder, a comprehensive web application built with Next.js that serves as a one-stop-shop for discovering and evaluating educational institutions across India. This platform is designed to empower students and parents with the data they need to make informed decisions about their educational future.

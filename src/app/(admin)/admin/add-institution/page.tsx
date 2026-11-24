@@ -1,6 +1,7 @@
 
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -72,7 +73,7 @@ const infrastructureItems = [
 ] as const;
 
 
-export default function AddInstitutionPage() {
+function AddInstitutionForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { addInstitution } = useInstitutions();
@@ -296,6 +297,14 @@ export default function AddInstitutionPage() {
         </form>
       </Form>
     </div>
+  );
+}
+
+export default function AddInstitutionPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-muted-foreground">Loading...</div>}>
+      <AddInstitutionForm />
+    </Suspense>
   );
 }
 

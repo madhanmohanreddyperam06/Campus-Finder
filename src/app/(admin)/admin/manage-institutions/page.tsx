@@ -52,7 +52,7 @@ export default function ManageInstitutionsPage() {
   };
 
   const handleView = (id: string) => {
-    router.push(`/institutions/${id}`);
+    router.push(`/institution/${id}`);
   };
 
   const handleDelete = async () => {

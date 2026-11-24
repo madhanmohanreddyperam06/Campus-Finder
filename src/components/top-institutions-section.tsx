@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState } from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
@@ -17,6 +18,11 @@ interface TopInstitutionsSectionProps {
 }
 
 export function TopInstitutionsSection({ title, institutions, icon: Icon, viewAllLink }: TopInstitutionsSectionProps) {
+  const [searchFilter, setSearchFilter] = useState('');
+  const displayedInstitutions = institutions.filter((inst) =>
+    inst.name.toLowerCase().includes(searchFilter.toLowerCase()) ||
+    inst.location.city.toLowerCase().includes(searchFilter.toLowerCase())
+  );
   return (
     <section className="w-full bg-muted py-16 md:py-24 lg:py-32">
       <motion.div 
@@ -36,7 +42,12 @@ export function TopInstitutionsSection({ title, institutions, icon: Icon, viewAl
               <div className="flex items-center gap-4">
                 <div className="relative hidden md:block">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input placeholder="Search in this section..." className="w-64 bg-background pl-9" />
+                  <Input
+                    placeholder="Search in this section..."
+                    className="w-64 bg-background pl-9"
+                    value={searchFilter}
+                    onChange={(e) => setSearchFilter(e.target.value)}
+                  />
                 </div>
                 <Link href={viewAllLink} className="flex items-center text-sm font-medium text-primary hover:underline">
                   View all <ArrowRight className="ml-1 h-4 w-4" />
@@ -55,7 +66,7 @@ export function TopInstitutionsSection({ title, institutions, icon: Icon, viewAl
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {institutions.map((institution) => (
+                  {displayedInstitutions.map((institution) => (
                     <TableRow key={institution.id}>
                       <TableCell className="font-medium">{institution.name}</TableCell>
                       <TableCell>{institution.location.city}</TableCell>
