@@ -1,8 +1,8 @@
-# Campus Finder: An AI-Powered Recommendation System for Personalized Discovery of Indian Educational Institutions
+# Campus Finder
 
 ![Next.js](https://img.shields.io/badge/Next.js-15.3.8-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript)
 ![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 ![Google Gemini](https://img.shields.io/badge/Google_Gemini-AI-8E75FF?style=flat-square&logo=googlegemini&logoColor=white)
 ![ShadCN/UI](https://img.shields.io/badge/ShadCN%2FUI-Latest-000000?style=flat-square&logo=shadcnui&logoColor=white)
